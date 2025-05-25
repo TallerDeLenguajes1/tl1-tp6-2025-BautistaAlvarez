@@ -211,8 +211,67 @@ if (cadena != null)
     Console.WriteLine(cadena.ToUpper());
     Console.WriteLine("Cadena en minusculas:");
     Console.WriteLine(cadena.ToLower());
+
+    string cadenaASeparar = "ladrillo,hormigon,yeso";
+    string[] cadenaSeparada = cadenaASeparar.Split(",");
+    Console.WriteLine($"La cadena que quiero separar: {cadenaASeparar}");
+    Console.WriteLine($"La primera parte de la cadena separada -{cadenaSeparada[0]}-, la segunda -{cadenaSeparada[1]}- y tercera -{cadenaSeparada[2]}-");
 }
 else
 {
     Console.WriteLine("No ingreso cadena valida");
+}
+//calculadora ejercicio4
+Console.WriteLine("Ingrese una ecuacion, por ejemplo '582+2', '2*2', '5/2' o '1-2'");
+string? ecuacion = Console.ReadLine();
+if (ecuacion != null)
+{
+    float numF1, numF2;
+    if (ecuacion.Contains("+"))
+    {
+        string[] ecuacionSeparada = ecuacion.Split("+");
+        if (float.TryParse(ecuacionSeparada[0], out numF1) && float.TryParse(ecuacionSeparada[1], out numF2))
+        {
+            float ResultadoF = numF1 + numF2;
+            Console.WriteLine($"La suma de {numF1} y {numF2} da resultado: {ResultadoF}");
+        }
+    }
+    else if (ecuacion.Contains("-"))
+    {
+        string[] ecuacionSeparada = ecuacion.Split("-");
+        if (float.TryParse(ecuacionSeparada[0], out numF1) && float.TryParse(ecuacionSeparada[1], out numF2))
+        {
+            float ResultadoF = numF1 - numF2;
+            Console.WriteLine($"La resta de {numF1} y {numF2} da resultado: {ResultadoF}");
+        }
+    }
+    else if (ecuacion.Contains("*"))
+    {
+        string[] ecuacionSeparada = ecuacion.Split("*");
+        if (float.TryParse(ecuacionSeparada[0], out numF1) && float.TryParse(ecuacionSeparada[1], out numF2))
+        {
+            float ResultadoF = numF1 * numF2;
+            Console.WriteLine($"El producto de {numF1} y {numF2} da resultado: {ResultadoF}");
+        }
+    }
+    else if (ecuacion.Contains("/"))
+    {
+        string[] ecuacionSeparada = ecuacion.Split("/");
+        if (float.TryParse(ecuacionSeparada[0], out numF1) && float.TryParse(ecuacionSeparada[1], out numF2))
+        {
+            if (numF2 != 0)
+            {
+                float ResultadoF = numF1 / numF2;
+                Console.WriteLine($"La division de {numF1} y {numF2} da resultado: {ResultadoF}");
+            }
+            else
+            {
+                Console.WriteLine("No se puede dividir en 0");
+            }
+        }
+    }
+}
+else
+{
+    Console.WriteLine("Ecuacion invalida");
 }
