@@ -58,4 +58,20 @@ else
 {
     Console.WriteLine("Numero invalido");
 }
+Console.WriteLine("Ingrese ahora 2 numeros:");
+string? num1Str = Console.ReadLine();
+string? num2Str = Console.ReadLine();
+int num1, num2;
+
+if (int.TryParse(num1Str, out num1) && int.TryParse(num2Str, out num2))
+{
+    int max = Math.Max(num1, num2);
+    int min = Math.Min(num1, num2);
+    Console.WriteLine($"Numero maximo: {max}");
+    Console.WriteLine($"Numero minimo: {min}");
+}
+else
+{
+    Console.WriteLine("Numero invalidos");
+}
 
