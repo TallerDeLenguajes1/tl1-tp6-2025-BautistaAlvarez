@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Security.Cryptography.X509Certificates;
+
 Console.WriteLine("Hello, World!");
 int a;
 int b;
@@ -35,7 +37,8 @@ do
 {
     Console.WriteLine("Ingrese 1 para Sumar, 2 para Restar, 3 para Multiplicar o 4 para Dividir");
     string? operacionStr = Console.ReadLine();
-    int resultado, operacion;
+    int operacion;
+    double resultado;
     if (int.TryParse(operacionStr, out operacion) && operacion > 0 && operacion < 5)
     {
         switch (operacion)
@@ -48,7 +51,7 @@ do
                 if (int.TryParse(num1Str, out num1) && int.TryParse(num2Str, out num2))
                 {
                     resultado = num1 + num2;
-                    Console.WriteLine("La suma de " + num1 + " y de " + num2 + " es: " + resultado);
+                    Console.WriteLine("La suma de " + num1.ToString() + " y de " + num2.ToString() + " es: " + resultado.ToString());
                 }
                 else
                 {
@@ -62,7 +65,7 @@ do
                 if (int.TryParse(num1Str, out num1) && int.TryParse(num2Str, out num2))
                 {
                     resultado = num1 - num2;
-                    Console.WriteLine("La resta de " + num1 + " y de " + num2 + " es: " + resultado);
+                    Console.WriteLine("La resta de " + num1.ToString() + " y de " + num2.ToString() + " es: " + resultado.ToString());
                 }
                 else
                 {
@@ -76,7 +79,7 @@ do
                 if (int.TryParse(num1Str, out num1) && int.TryParse(num2Str, out num2))
                 {
                     resultado = num1 * num2;
-                    Console.WriteLine("El resultado de " + num1 + " y de " + num2 + " es: " + resultado);
+                    Console.WriteLine("El resultado de " + num1.ToString() + " y de " + num2.ToString() + " es: " + resultado.ToString());
                 }
                 else
                 {
@@ -91,8 +94,8 @@ do
                 {
                     if (num2 != 0)
                     {
-                        resultado = num1 / num2;
-                        Console.WriteLine("El resultado de " + num1 + " y de " + num2 + " es: " + resultado);
+                        resultado = (double)num1 / num2;
+                        Console.WriteLine("El resultado de " + num1.ToString() + " y de " + num2.ToString() + " es: " + resultado.ToString("0.00"));
                     }
                     else
                     {
@@ -163,3 +166,53 @@ else
     Console.WriteLine("Numero invalidos");
 }
 
+//ejercicio4
+Console.WriteLine("Ingrese una cadena de texto:");
+string? cadena = Console.ReadLine();
+if (cadena != null)
+{
+    int longitud = cadena.Length;
+    Console.WriteLine($"La longitud de {cadena} es {longitud}");
+    Console.WriteLine("Ingrese una segunda cadena para concatenar:");
+    string? cadena2 = Console.ReadLine();
+    if (cadena2 != null)
+    {
+
+        string cadenaYCadena2 = cadena + " " + cadena2;
+        Console.WriteLine($"La cadena concatenada es {cadenaYCadena2}");
+        Console.WriteLine($"Otra forma concatenada es {cadena} {cadena2}");
+    }
+    else
+    {
+        Console.WriteLine("Segunda cadena invalida");
+    }
+
+    int subLong = longitud - 2; //con esto coloco el resto de la palabra que ingrese
+    string subCadena = cadena.Substring(2, subLong);//lo coloco aqui
+    Console.WriteLine($"La subcadena resultante es --{subCadena}--");
+
+    Console.WriteLine("Caracter por caracter usando foreach");
+    foreach (char caracter in cadena)
+    {
+        Console.WriteLine($"{caracter}");
+    }
+
+    int posicionStrBuscada = cadena.IndexOf("mundo");
+    if (posicionStrBuscada != -1)
+    {
+        Console.WriteLine($"La palabra mundo fue encontrada en la posicion: {posicionStrBuscada}");
+    }
+    else
+    {
+        Console.WriteLine("La palabra mundo no fue encontrada");
+    }
+
+    Console.WriteLine("Cadena en mayuscula:");
+    Console.WriteLine(cadena.ToUpper());
+    Console.WriteLine("Cadena en minusculas:");
+    Console.WriteLine(cadena.ToLower());
+}
+else
+{
+    Console.WriteLine("No ingreso cadena valida");
+}
