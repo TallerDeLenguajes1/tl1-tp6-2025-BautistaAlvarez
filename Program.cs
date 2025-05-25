@@ -27,4 +27,35 @@ if(int.TryParse(stringIngresado, out valIngresado)){
     Console.WriteLine("Invalido");
 }
 
-//ejercicio2
+//ejercicio3
+float numFloat;
+Console.WriteLine("Ingrese un numero para hacerle unas operaciones:");
+string? numFloatStr = Console.ReadLine();
+if (float.TryParse(numFloatStr, out numFloat))
+{
+    double valAbs = Math.Abs(numFloat);
+    double cuadrado = Math.Pow(numFloat, 2);
+    double seno = Math.Sin(numFloat);
+    double coseno = Math.Cos(numFloat);
+    int partEntera = (int)Math.Truncate(numFloat);
+
+    Console.WriteLine("Valor absoluto del numero: " + valAbs);
+    Console.WriteLine("Cuadrado del numero: " + cuadrado);
+    if (numFloat >= 0)
+    {
+        double raizCuadrada = Math.Sqrt(numFloat);
+        Console.WriteLine("Raiz cuadrada del numero " + raizCuadrada);
+    }
+    else
+    {
+        Console.WriteLine("No existe su raiz cuadrada, numero negativo");
+    }
+    Console.WriteLine("Seno del numero: " + seno);
+    Console.WriteLine("Coseno del numero: " + coseno);
+    Console.WriteLine("Parte entera del numero: " + partEntera);
+}
+else
+{
+    Console.WriteLine("Numero invalido");
+}
+
