@@ -28,13 +28,14 @@ if(int.TryParse(stringIngresado, out valIngresado)){
 }
 
 //ejercicio2
+string? num1Str, num2Str;
+int num1, num2;
 int  continuar = 0;
 do
 {
     Console.WriteLine("Ingrese 1 para Sumar, 2 para Restar, 3 para Multiplicar o 4 para Dividir");
     string? operacionStr = Console.ReadLine();
-    string? num1Str, num2Str;
-    int num1, num2, resultado, operacion;
+    int resultado, operacion;
     if (int.TryParse(operacionStr, out operacion) && operacion > 0 && operacion < 5)
     {
         switch (operacion)
@@ -113,3 +114,52 @@ do
         Console.WriteLine("Numero invalido");
     }
 } while (continuar != 0);
+
+//ejercicio3
+float numFloat;
+Console.WriteLine("Ingrese un numero para hacerle unas operaciones:");
+string? numFloatStr = Console.ReadLine();
+if (float.TryParse(numFloatStr, out numFloat))
+{
+    double valAbs = Math.Abs(numFloat);
+    double cuadrado = Math.Pow(numFloat, 2);
+    double seno = Math.Sin(numFloat);
+    double coseno = Math.Cos(numFloat);
+    int partEntera = (int)Math.Truncate(numFloat);
+
+    Console.WriteLine("Valor absoluto del numero: " + valAbs);
+    Console.WriteLine("Cuadrado del numero: " + cuadrado);
+    if (numFloat >= 0)
+    {
+        double raizCuadrada = Math.Sqrt(numFloat);
+        Console.WriteLine("Raiz cuadrada del numero " + raizCuadrada);
+    }
+    else
+    {
+        Console.WriteLine("No existe su raiz cuadrada, numero negativo");
+    }
+    Console.WriteLine("Seno del numero: " + seno);
+    Console.WriteLine("Coseno del numero: " + coseno);
+    Console.WriteLine("Parte entera del numero: " + partEntera);
+}
+else
+{
+    Console.WriteLine("Numero invalido");
+}
+Console.WriteLine("Ingrese ahora 2 numeros:");
+num1Str = Console.ReadLine();
+num2Str = Console.ReadLine();
+
+
+if (int.TryParse(num1Str, out num1) && int.TryParse(num2Str, out num2))
+{
+    int max = Math.Max(num1, num2);
+    int min = Math.Min(num1, num2);
+    Console.WriteLine($"Numero maximo: {max}");
+    Console.WriteLine($"Numero minimo: {min}");
+}
+else
+{
+    Console.WriteLine("Numero invalidos");
+}
+
